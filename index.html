@@ -1,318 +1,310 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basem ELSokary | Portfolio</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <title>Basem ELSokary| Basem El Sokary - Backend Developer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#d4af37',
+                        'gold-light': '#f3e5ab',
+                        'gold-dark': '#aa8c2c',
+                        dark: '#0a0a0a',
+                        'dark-card': '#141414',
+                        'dark-gray': '#1e1e1e',
+                        border: '#2a2a2a'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg-deep: #0a0a0a;
-            --bg-card: #141414;
-            --bg-card-hover: #1f1f1f;
-            --gold: #f39c12;
-            --gold-light: #f1c40f;
-            --text-main: #ffffff;
-            --text-muted: #b0b0b0;
-            --border-color: #262626;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
-
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            overflow-x: hidden;
-            position: relative;
+            font-family: 'Cairo', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
         }
-
-        /* Background Cyber Image with Dark Overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.85), rgba(10,10,10,0.95)), url('bg.jpg.jpeg');
+        /* Hero Cyber Security Background Overlay */
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0.95)), url('bg.jpg.jpeg');
             background-size: cover;
             background-position: center;
-            z-index: -1;
+            background-attachment: fixed;
         }
-
-        header {
-            background: rgba(14, 14, 14, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 15px 0;
+        /* Custom Glowing Effect for Gold Elements */
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
         }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+        .gold-glow-lg {
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--text-main);
-            text-decoration: none;
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .logo span {
-            color: var(--gold);
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
         }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 20px 60px 20px;
-        }
-
-        .hero-content {
-            max-width: 700px;
-        }
-
-        .profile-img-container {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 25px auto;
-            border-radius: 50%;
-            border: 4px solid var(--gold);
-            overflow: hidden;
-            box-shadow: 0 0 25px rgba(243, 156, 18, 0.4);
-            background: var(--bg-card);
-        }
-
-        .profile-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            color: var(--text-main);
-        }
-
-        .hero h1 span {
-            color: var(--gold);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            background-color: var(--gold);
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
-        }
-
-        .btn:hover {
-            background-color: var(--gold-light);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-main);
-            border: 2px solid var(--border-color);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            background-color: transparent;
-        }
-
-        section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 50px;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-
-        .section-title span {
-            color: var(--gold);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .skill-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            background: var(--bg-card-hover);
-        }
-
-        .skill-card i {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-
-        .skill-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .skill-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            background: var(--bg-card);
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
         }
     </style>
 </head>
-<body>
+<body class="bg-dark text-white min-h-screen antialiased selection:bg-gold selection:text-black">
 
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">Basem<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">عني</a></li>
-                <li><a href="#skills">المهارات</a></li>
-                <li><a href="#contact">تواصل معي</a></li>
-            </ul>
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 w-full bg-dark/90 backdrop-blur-md border-b border-border z-50 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-black tracking-wider text-white flex items-center gap-2">
+                <i class="fas fa-terminal text-gold"></i>
+                <span>Basem <span class="text-gold">ELSokary</span></span>
+            </a>
+            
+            <nav class="hidden md:flex gap-8 text-sm font-bold text-gray-300">
+                <a href="#about" class="hover:text-gold transition">الرئيسية</a>
+                <a href="#skills" class="hover:text-gold transition">المهارات</a>
+                <a href="#projects" class="hover:text-gold transition">المشاريع</a>
+                <a href="#contact" class="hover:text-gold transition">التواصل</a>
+            </nav>
+
+            <a href="#contact" class="px-5 py-2 text-xs font-bold bg-gold text-black rounded-lg hover:bg-gold-light transition">
+                تواصل معي
+            </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="about">
-        <div class="hero-content">
-            <div class="profile-img-container">
-                <img src="profile.jpg" alt="Basem ELSokary">
+    <!-- HERO SECTION WITH CYBERSECURITY BACKGROUND -->
+    <section id="about" class="hero-bg min-h-screen flex items-center justify-center pt-28 pb-16 px-6 relative">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            
+            <!-- PROFILE IMAGE WITH GOLD GLOW -->
+            <div class="relative w-44 h-44 mx-auto mb-8">
+                <div class="w-full h-full rounded-full border-4 border-gold p-1.5 gold-glow-lg overflow-hidden bg-dark-card">
+                    <img src="profile.jpg.jpeg" alt="Basem ELSokary" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/300x300/141414/d4af37?text=Basem+ElSokary'">
+                </div>
+                <div class="absolute bottom-2 right-2 bg-gold text-black w-9 h-9 rounded-full flex items-center justify-center text-sm shadow-lg">
+                    <i class="fas fa-check-circle"></i>
+                </div>
             </div>
-            <h1>مرحباً، أنا <span>Basem ELSokary</span></h1>
-            <p>مطور برمجيات، محلل بيانات، ومهتم بأمن المعلومات (Cybersecurity). أمتلك خبرة عملية في بناء الأنظمة ومعالجة وتحليل البيانات باحترافية عالية.</p>
-            <div class="btn-group">
-                <a href="#contact" class="btn">تواصل معي</a>
-                <a href="https://github.com/Boss-311" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> جيت هب</a>
+
+            <!-- NAME & TITLE -->
+            <h1 class="text-3xl sm:text-5xl font-black mb-3 leading-tight tracking-tight">
+                Basem ELSokary
+            </h1>
+            <h2 class="text-lg sm:text-2xl font-bold text-gold mb-6 tracking-wide">
+                مطور خلفي (Backend Developer) & متخصص نظم معلومات
+            </h2>
+
+            <!-- BIO / SUMMARY -->
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-10 max-w-3xl mx-auto bg-dark-card/80 p-6 sm:p-8 rounded-2xl border border-border/80 backdrop-blur-sm shadow-xl text-justify sm:text-center">
+                مطور خلفي (Backend Developer) ومتخصص في نظم المعلومات، يمتلك خبرة عملية في تطوير وبناء البرمجيات باستخدام Python وJavaScript، مع كفاءة في تصميم وإدارة قواعد البيانات العلاقاتية عبر SQL. يتميز باهتمام متزايد بمبادئ الأمن السيبراني (Cybersecurity) وأمان التطبيقات، مع معرفة متكاملة بأساسيات الواجهات الأمامية (Frontend) لتسهيل الربط والتعاون البرمجي. يجمع بين المهارات التقنية والقدرة العالية على تحليل البيانات وتوثيق التقارير باستخدام حزمة Microsoft Office (Excel, Word, PowerPoint) لدعم كفاءة سير العمل وتحقيق الأهداف المؤسسية.
+            </p>
+
+            <!-- CALL TO ACTION BUTTONS -->
+            <div class="flex flex-wrap gap-4 justify-center items-center">
+                <a href="#contact" class="px-8 py-3.5 bg-gold text-black rounded-xl font-bold hover:bg-gold-light transition shadow-lg gold-glow transform hover:-translate-y-1 flex items-center gap-2">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>تواصل مباشر</span>
+                </a>
+                <a href="https://github.com/Basem-ELSokary" target="_blank" class="px-8 py-3.5 bg-dark-gray text-white border border-border hover:border-gold hover:text-gold rounded-xl font-bold transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <i class="fab fa-github text-lg"></i>
+                    <span>حساب GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/basem-el-sokkary-79b3b7419/" target="_blank" class="px-8 py-3.5 bg-dark-gray text-white border border-border hover:border-gold hover:text-gold rounded-xl font-bold transition transform hover:-translate-y-1 flex items-center gap-2">
+                    <i class="fab fa-linkedin text-lg"></i>
+                    <span>حساب LinkedIn</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="section-title">مهاراتي <span>التقنية</span></h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fab fa-python"></i>
-                <h3>Python & Pandas</h3>
-                <p>تحليل وتنظيف البيانات ومعالجة الأخطاء بكفاءة عالية.</p>
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-black mb-3">
+                المهارات والخبرات <span class="text-gold">التقنية</span>
+            </h2>
+            <div class="w-20 h-1 bg-gold mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Category 1: Backend -->
+            <div class="bg-dark-card border border-border p-6 rounded-2xl hover:border-gold transition duration-300 shadow-lg group">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-12 h-12 bg-dark-gray rounded-xl flex items-center justify-center text-gold text-2xl group-hover:bg-gold group-hover:text-black transition">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">تطوير الخلفية (Backend)</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Python</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">JavaScript</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">RESTful APIs</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">OOP</span>
+                </div>
             </div>
-            <div class="skill-card">
-                <i class="fas fa-database"></i>
-                <h3>SQL Server</h3>
-                <p>إدارة وهندسة قواعد البيانات واستعلامات الأداء المتقدمة.</p>
+
+            <!-- Category 2: Databases -->
+            <div class="bg-dark-card border border-border p-6 rounded-2xl hover:border-gold transition duration-300 shadow-lg group">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-12 h-12 bg-dark-gray rounded-xl flex items-center justify-center text-gold text-2xl group-hover:bg-gold group-hover:text-black transition">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">قواعد البيانات (Databases)</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">SQL Queries</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Relational Database Design</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Database Management</span>
+                </div>
             </div>
-            <div class="skill-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Cybersecurity</h3>
-                <p>فحص الأنظمة، اكتشاف الثغرات، وتأمين التطبيقات والشبكات.</p>
+
+            <!-- Category 3: Cybersecurity -->
+            <div class="bg-dark-card border border-border p-6 rounded-2xl hover:border-gold transition duration-300 shadow-lg group">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-12 h-12 bg-dark-gray rounded-xl flex items-center justify-center text-gold text-2xl group-hover:bg-gold group-hover:text-black transition">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">الأمن السيبراني</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Application Security</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Security Fundamentals</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Vulnerability Basics</span>
+                </div>
             </div>
-            <div class="skill-card">
-                <i class="fas fa-code"></i>
-                <h3>Backend Development</h3>
-                <p>بناء وتطوير واجهات البرمجيات الخلفية وربط قواعد البيانات.</p>
+
+            <!-- Category 4: Frontend Basics -->
+            <div class="bg-dark-card border border-border p-6 rounded-2xl hover:border-gold transition duration-300 shadow-lg group">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-12 h-12 bg-dark-gray rounded-xl flex items-center justify-center text-gold text-2xl group-hover:bg-gold group-hover:text-black transition">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">أساسيات الواجهات الأمامية</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">HTML5</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">CSS3</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Frontend Integration</span>
+                </div>
             </div>
+
+            <!-- Category 5: Office & Analysis -->
+            <div class="bg-dark-card border border-border p-6 rounded-2xl hover:border-gold transition duration-300 shadow-lg group md:col-span-2 lg:col-span-2">
+                <div class="flex items-center gap-4 mb-5">
+                    <div class="w-12 h-12 bg-dark-gray rounded-xl flex items-center justify-center text-gold text-2xl group-hover:bg-gold group-hover:text-black transition">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">التحليل والإنتاجية (Microsoft Office)</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Microsoft Excel (Data Analysis)</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Microsoft Word (Documentation)</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">Microsoft PowerPoint (Presentations)</span>
+                    <span class="px-3.5 py-1.5 bg-dark-gray border border-border rounded-lg text-xs font-semibold text-gray-200">توثيق التقارير الفنية</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title">دعنا <span>نتواصل</span></h2>
-        <div style="text-align: center; max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 30px; border-radius: 12px; border: 1px solid var(--border-color);">
-            <p style="color: var(--text-muted); margin-bottom: 20px;">يسعدني التواصل معك لمناقشة المشاريع والفرص الجديدة.</p>
-            <a href="mailto:basembosbos013@gmail.com" class="btn"><i class="fas fa-envelope"></i> أرسل لي بريداً</a>
+    <!-- PROJECTS SECTION (EMPTY PLACEHOLDER) -->
+    <section id="projects" class="py-20 px-6 max-w-6xl mx-auto border-t border-border/50">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-black mb-3">
+                معرض <span class="text-gold">المشاريع</span>
+            </h2>
+            <div class="w-20 h-1 bg-gold mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Professional Empty Placeholder -->
+        <div class="bg-dark-card/60 border border-dashed border-border rounded-3xl p-12 text-center max-w-2xl mx-auto">
+            <div class="w-20 h-20 bg-dark-gray/80 text-gold rounded-full flex items-center justify-center text-3xl mx-auto mb-6 shadow-inner">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">المشاريع قيد التجهيز</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                يتم حالياً تجهيز وتوثيق مجموعة من المشاريع البرمجية وتطبيقات Backend المتميزة، وستضاف هنا قريباً جداً.
+            </p>
+            <span class="inline-flex items-center gap-2 px-4 py-2 bg-dark-gray text-gold border border-gold/30 rounded-full text-xs font-bold">
+                <i class="fas fa-spinner fa-spin"></i> قريباً
+            </span>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Basem ELSokary. جميع الحقوق محفوظة.</p>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 px-6 max-w-4xl mx-auto border-t border-border/50">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl sm:text-4xl font-black mb-3">
+                تواصل <span class="text-gold">معي</span>
+            </h2>
+            <p class="text-gray-400 text-sm">يسعدني دائماً تواصلك لمناقشة الفرص والمشاريع</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Phone Card -->
+            <a href="tel:01555713822" class="bg-dark-card border border-border hover:border-gold p-6 rounded-2xl flex items-center gap-5 transition duration-300 group shadow-lg">
+                <div class="w-14 h-14 bg-dark-gray text-gold rounded-2xl flex items-center justify-center text-xl group-hover:bg-gold group-hover:text-black transition">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div>
+                    <span class="text-xs text-gray-400 block mb-1">رقم الهاتف</span>
+                    <span class="text-lg font-bold text-white tracking-wider dir-ltr inline-block">01555713822</span>
+                </div>
+            </a>
+
+            <!-- Email Card -->
+            <a href="mailto:basembosbos013@gmail.com" class="bg-dark-card border border-border hover:border-gold p-6 rounded-2xl flex items-center gap-5 transition duration-300 group shadow-lg">
+                <div class="w-14 h-14 bg-dark-gray text-gold rounded-2xl flex items-center justify-center text-xl group-hover:bg-gold group-hover:text-black transition">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="overflow-hidden">
+                    <span class="text-xs text-gray-400 block mb-1">البريد الإلكتروني</span>
+                    <span class="text-sm sm:text-base font-bold text-white truncate block">basembosbos013@gmail.com</span>
+                </div>
+            </a>
+
+            <!-- LinkedIn Card -->
+            <a href="https://www.linkedin.com/in/basem-el-sokkary-79b3b7419/" target="_blank" class="bg-dark-card border border-border hover:border-gold p-6 rounded-2xl flex items-center gap-5 transition duration-300 group shadow-lg">
+                <div class="w-14 h-14 bg-dark-gray text-gold rounded-2xl flex items-center justify-center text-xl group-hover:bg-gold group-hover:text-black transition">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div>
+                    <span class="text-xs text-gray-400 block mb-1">لينكد إن</span>
+                    <span class="text-base font-bold text-white">Basem El-Sokkary</span>
+                </div>
+            </a>
+
+            <!-- GitHub Card -->
+            <a href="https://github.com/Basem-ELSokary" target="_blank" class="bg-dark-card border border-border hover:border-gold p-6 rounded-2xl flex items-center gap-5 transition duration-300 group shadow-lg">
+                <div class="w-14 h-14 bg-dark-gray text-gold rounded-2xl flex items-center justify-center text-xl group-hover:bg-gold group-hover:text-black transition">
+                    <i class="fab fa-github"></i>
+                </div>
+                <div>
+                    <span class="text-xs text-gray-400 block mb-1">جيت هب</span>
+                    <span class="text-base font-bold text-white">Basem-ELSokary</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-dark-card border-t border-border text-center text-xs text-gray-500">
+        <p>© 2026 باسم مؤمن السكري. جميع الحقوق محفوظة.</p>
     </footer>
 
 </body>
